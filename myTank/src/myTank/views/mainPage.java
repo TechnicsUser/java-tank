@@ -15,7 +15,7 @@ import javax.swing.JTabbedPane;
 public class mainPage extends JFrame {
 
 	/**
-	 * new comment
+	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	   Controller controller = new Controller(this) ;
