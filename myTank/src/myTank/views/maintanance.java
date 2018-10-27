@@ -1,10 +1,6 @@
 package myTank.views;
 
-import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JButton;
@@ -19,8 +15,7 @@ import data.readData;
 import data.writeData;
 
 import java.awt.Color;
-import java.awt.Component;
-
+ 
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
@@ -129,12 +124,12 @@ public class maintanance extends JPanel {
 		lstCompleated.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 		 add(lstCompleated);
 		
-		JLabel lblToDo = new JLabel("To Do");
+		JLabel lblToDo = new JLabel("To Do  ");
 		lblToDo.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
 		lblToDo.setBounds(66, 99, 104, 19);
 		 add(lblToDo);
 		
-		JLabel lblCompleated = new JLabel("Compleated");
+		JLabel lblCompleated = new JLabel("Compleated  ");
 		lblCompleated.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
 		lblCompleated.setBounds(310, 95, 195, 23);
 		 add(lblCompleated);

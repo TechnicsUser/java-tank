@@ -8,6 +8,10 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
+import java.util.LinkedHashSet;
+import java.util.PriorityQueue;
+import java.util.Set;
+import java.util.TreeSet;
 
 import javax.swing.DefaultListModel;
 
@@ -28,8 +32,11 @@ public class readData implements Serializable {
 		//	if(s instanceof DefaultListModel<?>) {
 				model =(Object[]) s;
 				System.out.println(s);
-
-		//	}
+			 PriorityQueue<String> pq = new PriorityQueue<String>();
+			pq.add("test");
+			LinkedHashSet<Object> se = new LinkedHashSet<>();
+		
+	//	}
 		//}
 	
      }

@@ -42,7 +42,7 @@ public class mainPanel extends JPanel {
 			}
 		});
 		setLayout(null);
-		btnParamaters.setBounds(7, 10, 89, 23);
+		btnParamaters.setBounds(7, 10, 109, 23);
 		add(btnParamaters);
 		
 		JButton btnNewLivestock = new JButton("New livestock");
@@ -52,7 +52,7 @@ public class mainPanel extends JPanel {
 
 			}
 		});
-		btnNewLivestock.setBounds(101, 10, 99, 23);
+		btnNewLivestock.setBounds(143, 10, 109, 23);
 		add(btnNewLivestock);
 		
 		JButton btnMaintanance = new JButton("Maintanance");
@@ -62,7 +62,7 @@ public class mainPanel extends JPanel {
  
 			}
 		});
-		btnMaintanance.setBounds(205, 10, 95, 23);
+		btnMaintanance.setBounds(285, 10, 109, 23);
 		add(btnMaintanance);
 		{
 			JPanel buttonPane = new JPanel();
