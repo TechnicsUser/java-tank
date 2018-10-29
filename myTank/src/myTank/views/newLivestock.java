@@ -197,13 +197,16 @@ public class newLivestock extends JPanel
 					Fish f = new Fish(String.valueOf(txtName.getText()),String.valueOf(textFieldPurchasedOn.getText()), 
 							Double.parseDouble(txtPrice.getText()), String.valueOf(txtLocation.getText()),
 							String.valueOf(comQuality), Integer.parseInt(txtQuantity.getText()), String.valueOf(comSize.getSelectedItem()) );
-				//	LivestockController.add(f);
+					LivestockController.add(f);
 					list.add(f.toString());
 					list.add(txtName.getText());
 					list.add(textFieldPurchasedOn.getText());
 					list.add(txtPrice.getText());
 					list.add(txtLocation.getText());
 		
+					list.add(comQuality.getSelectedItem().toString());
+					list.add(txtQuantity.getText());
+					list.add(comSize.getSelectedItem().toString());
 					list.add(comQuality.getSelectedItem().toString());
 					list.add(txtQuantity.getText());
 					list.add(comSize.getSelectedItem().toString());
