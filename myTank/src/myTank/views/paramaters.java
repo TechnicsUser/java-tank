@@ -29,6 +29,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import javax.swing.JInternalFrame;
+import javax.swing.border.BevelBorder;
+import java.awt.ComponentOrientation;
 
 public class paramaters extends JPanel{
 
@@ -51,6 +53,7 @@ public class paramaters extends JPanel{
 	private JTextField txtTemp;
 	private JTextField textField_7;
 	private JButton btnSave;
+	private JPanel chartPanel;
 	
 
 	/**
@@ -251,7 +254,9 @@ public class paramaters extends JPanel{
 		btnSave = new JButton("Save");
 		btnSave.setBounds(124, 251, 90, 28);
 		add(btnSave);
-	    JPanel chartPanel = new XChartPanel<XYChart>(controller.getChart());
+	    chartPanel = new XChartPanel<XYChart>(controller.getChart());
+	    chartPanel.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+	    chartPanel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
  	    chartPanel.setBounds(337, 49, 90, 33);
 
 	     add(chartPanel);  

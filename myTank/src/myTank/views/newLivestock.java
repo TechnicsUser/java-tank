@@ -19,6 +19,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
  import myTank.Coral;
 import myTank.Fish;
+import myTank.Frag;
 import myTank.Invert;
 
 import java.awt.event.ActionListener;
@@ -27,6 +28,11 @@ import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
 import java.awt.Component;
 import javax.swing.SwingConstants;
+import javax.swing.JList;
+import javax.swing.border.BevelBorder;
+import java.awt.Color;
+import javax.swing.JTextPane;
+import java.awt.List;
 
 public class newLivestock extends JPanel
 {
@@ -39,6 +45,8 @@ public class newLivestock extends JPanel
 	private JTextField txtQuantity;
 	private JTextField txtTypeOther;
 	private JComboBox<?> comQuality;
+	 List list = new List();
+
 	JComboBox cbCoralType = new JComboBox();
 	JLabel lblPurchased = new JLabel("Purchased");
 	JLabel lblLocation = new JLabel("Location");
@@ -89,18 +97,18 @@ public class newLivestock extends JPanel
 		frame.setBounds(100, 100, 450, 300);
  		
 		txtName = new JTextField();
-		txtName.setBounds(113, 26, 86, 20);
+		txtName.setBounds(113, 26, 86, 23);
 		txtName.setColumns(10);
 		
 		txtTypeOther = new JTextField();
-		txtTypeOther.setBounds(247, 55, 114, 20);
+		txtTypeOther.setBounds(247, 55, 114, 23);
 	 add(txtTypeOther);
 		txtTypeOther.setColumns(10);
  		txtTypeOther.setVisible(false);
 
  		JComboBox<?> comSize = new JComboBox<Object>();
 		comSize.setModel(new DefaultComboBoxModel(new String[] {"Small", "Medium", "Large"}));
-		comSize.setBounds(203, 142, 63, 25);
+		comSize.setBounds(203, 142, 91, 25);
 		
 		cbCoralType.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
@@ -144,7 +152,7 @@ public class newLivestock extends JPanel
 		lblName.setBounds(10, 28, 55, 16);
 		
 		textFieldPurchasedOn = new JTextField();
-		textFieldPurchasedOn.setBounds(54, 113, 86, 20);
+		textFieldPurchasedOn.setBounds(54, 113, 86, 23);
 		textFieldPurchasedOn.setColumns(10);
 		
 		JLabel lblQuality = new JLabel("Quality");
@@ -158,7 +166,7 @@ public class newLivestock extends JPanel
 		lblPrice.setBounds(330, 115, 55, 16);
 		
 		txtPrice = new JTextField();
-		txtPrice.setBounds(367, 113, 55, 20);
+		txtPrice.setBounds(367, 113, 55, 23);
 		txtPrice.setColumns(10);
 		
 		lblPurchased.setBounds(10, 97, 104, 16);
@@ -167,14 +175,14 @@ public class newLivestock extends JPanel
 		
 		txtLocation = new JTextField();
 		txtLocation.setToolTipText("location");
-		txtLocation.setBounds(203, 113, 114, 20);
+		txtLocation.setBounds(203, 113, 114, 23);
 		txtLocation.setColumns(10);
 		
 		JLabel lblQuantity = new JLabel("Quantity");
-		lblQuantity.setBounds(306, 143, 55, 17);
+		lblQuantity.setBounds(306, 146, 55, 17);
 		
 		txtQuantity = new JTextField();
-		txtQuantity.setBounds(367, 144, 55, 20);
+		txtQuantity.setBounds(367, 144, 55, 23);
 		txtQuantity.setColumns(10);
 		
 		JLabel lblSize = new JLabel("Size");
@@ -182,32 +190,50 @@ public class newLivestock extends JPanel
 		
 		
 		JButton btnAdd = new JButton("Add");
-		btnAdd.setBounds(358, 211, 56, 26);
+		btnAdd.setBounds(363, 251, 56, 26);
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(String.valueOf(comType.getSelectedItem()).equals("Fish")) {
-					Fish f = new Fish(String.valueOf(txtName),String.valueOf(textFieldPurchasedOn), Double.parseDouble(txtPrice.getText()), String.valueOf(txtLocation),
-							String.valueOf(comQuality), Integer.parseInt(txtQuantity.getText()), String.valueOf(comSize) );
+					Fish f = new Fish(String.valueOf(txtName.getText()),String.valueOf(textFieldPurchasedOn.getText()), 
+							Double.parseDouble(txtPrice.getText()), String.valueOf(txtLocation.getText()),
+							String.valueOf(comQuality), Integer.parseInt(txtQuantity.getText()), String.valueOf(comSize.getSelectedItem()) );
+				//	LivestockController.add(f);
+					list.add(f.toString());
+					list.add(txtName.getText());
+					list.add(textFieldPurchasedOn.getText());
+					list.add(txtPrice.getText());
+					list.add(txtLocation.getText());
+		
+					list.add(comQuality.getSelectedItem().toString());
+					list.add(txtQuantity.getText());
+					list.add(comSize.getSelectedItem().toString());
+
 					
-					txtName.setText(f.toString());
+					txtName.setText(txtName.getText());
 				}
 				if(String.valueOf(comType.getSelectedItem()).equals("Coral")) {
- 					Coral c = new Coral(String.valueOf(txtName),String.valueOf(textFieldPurchasedOn), Double.parseDouble(txtPrice.getText()), String.valueOf(txtLocation),
+ 					Coral c = new Coral(String.valueOf(txtName),String.valueOf(textFieldPurchasedOn),
+ 							Double.parseDouble(txtPrice.getText()), String.valueOf(txtLocation),
 							String.valueOf(comQuality), Integer.parseInt(txtQuantity.getText()), String.valueOf(comSize), null, null);
-					
+					LivestockController.add(c);
+
 					txtName.setText(c.toString());
 					
 				}
 				if(String.valueOf(comType.getSelectedItem()).equals("Invert")) {
-					Invert i = new Invert(String.valueOf(txtName),String.valueOf(textFieldPurchasedOn), Double.parseDouble(txtPrice.getText()), String.valueOf(txtLocation),
+					Invert i = new Invert(String.valueOf(txtName),String.valueOf(textFieldPurchasedOn),
+							Double.parseDouble(txtPrice.getText()), String.valueOf(txtLocation),
 							String.valueOf(comQuality), Integer.parseInt(txtQuantity.getText()), String.valueOf(comSize) );
-					
+					LivestockController.add(i);
+
 					txtName.setText(i.toString());
   				}
 				if(String.valueOf(comType.getSelectedItem()).equals("Frag")) {
-					Invert i = new Invert(String.valueOf(txtName),String.valueOf(textFieldPurchasedOn), Double.parseDouble(txtPrice.getText()), String.valueOf(txtLocation),
+					Frag i = new Frag(String.valueOf(txtName),String.valueOf(textFieldPurchasedOn),
+							Double.parseDouble(txtPrice.getText()), String.valueOf(txtLocation),
 							String.valueOf(comQuality), Integer.parseInt(txtQuantity.getText()), String.valueOf(comSize) );
-					
+					LivestockController.add(i);
+
 					txtName.setText(i.toString());
   				}
 			}
@@ -232,12 +258,12 @@ public class newLivestock extends JPanel
 	 add(lblSize);
 	 add(comSize);
 		
-		lblMountedTo.setBounds(10, 186, 86, 16);
+		lblMountedTo.setBounds(15, 226, 86, 16);
 	 add(lblMountedTo);
 		lblMountedTo.setVisible(false);
 		
 		cbMountedTo.setModel(new DefaultComboBoxModel(new String[] {"Live Rock(no coraline)", "Live Rock", "Frag Plug(printed)", "Frag Plug"}));
-		cbMountedTo.setBounds(108, 182, 158, 25);
+		cbMountedTo.setBounds(113, 222, 158, 25);
 	 add(cbMountedTo);
 	 
 	 JButton btnHome = new JButton("Home");
@@ -247,9 +273,13 @@ public class newLivestock extends JPanel
 
 	 	}
 	 });
-	 btnHome.setBounds(10, 213, 89, 23);
+	 btnHome.setBounds(25, 253, 89, 23);
 	 add(btnHome);
-		cbMountedTo.setVisible(false);
+	 
+	 list.setBounds(191, 267, 124, 64);
+	 add(list);
+	 list.add("test");
+ 		cbMountedTo.setVisible(false);
 		
 	
 
